@@ -12,6 +12,11 @@
 ==========================================
 */
 
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Datawarehouse')
+BEGIN
+    ALTER DATABASE Datawarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE Datawarehouse;
+END
 -- Create a master database for admin-level use (optional)
 CREATE DATABASE master;
 
